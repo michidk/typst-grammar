@@ -1,0 +1,61 @@
+name: typst-grammar::ci
+
+on:
+  # Trigger the workflow on push or pull request, but only for the main branch
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [opened, synchronize]
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+env:
+  LINGUIST_REF: v9.0.0
+  NODE_VERSION: 22.x
+
+jobs:
+  run:
+    name: Ruby ${{ matrix.ruby }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ '3.3', '3.2', '3.1' ]
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # Repository name with owner. For example, actions/checkout
+        # Default: ${{ github.repository }}
+        repository: 'github-linguist/linguist'
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch.
+        ref: ${{ env.LINGUIST_REF }}
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Fetch grammar submodules
+      run: |
+        git fetch origin main:main v2.0.0:v2.0.0 test/attributes:test/attributes test/master:test/master
+        sed -i 's|git@github.com:|https://github.com/|' .gitmodules
+        git submodule init
+        git submodule sync --quiet
+        script/fast-submodule-update
+    - name: Remove typst-grammar submodule
+      run: |
+        rm -rf vendor/grammars/typst-grammar
+    - name: Remove repository test
+      run: |
+        rm test/test_repository.rb
+    - uses: actions/checkout@v4
+      with:
+        # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: vendor/grammars/typst-grammar
+    - name: Run tests
+      run: bundle exec rake
+    - name: Check Licenses
+      run: bundle exec licensed status -c vendor/licenses/config.yml
