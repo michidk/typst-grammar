@@ -1,2 +1,2 @@
-[tinymist-ref](https://github.com/Myriad-Dreamin/tinymist/commit/d4d8345166b1ece203fe87b7dbf013ac61ab14c2)
-[github-ref](https://github.com/Myriad-Dreamin/typst-grammar/commit/487b82d416e94dd87203b26a2ae7a8c63df8a43d)
+[tinymist-ref](https://github.com/Myriad-Dreamin/tinymist/commit/691a28ef55756766c9f65f4097bd6c7ff5878238)
+[github-ref](https://github.com/Myriad-Dreamin/typst-grammar/commit/87f7c8ebe3cd6d5b77cb0cb405477f0e1d128494)

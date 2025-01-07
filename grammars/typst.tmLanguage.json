@@ -164,7 +164,7 @@
     },
     {
      "begin": "#(?=(?:break|continue|and|or|not|return|as|in|include|import|let|else|if|for|while|context|set|show)\\b(?!-))",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "keyword.control.hash.typst"
@@ -183,7 +183,7 @@
     },
     {
      "begin": "#(?=(?:any|str|int|float|bool|type|length|content|array|dictionary|arguments)\\b(?!-))",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "entity.name.type.primitive.hash.typst"
@@ -202,7 +202,7 @@
     },
     {
      "begin": "#(?=(?:none)\\b(?!-))",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "keyword.other.none.hash.typst"
@@ -221,7 +221,7 @@
     },
     {
      "begin": "#(?=(?:false|true)\\b(?!-))",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "constant.language.boolean.hash.typst"
@@ -239,8 +239,8 @@
      ]
     },
     {
-     "begin": "#(?=[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*[\\(\\[])",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "begin": "#(?=[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*[\\(\\[])",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "entity.name.function.hash.typst"
@@ -258,8 +258,8 @@
      ]
     },
     {
-     "begin": "#(?=[\\p{XID_Start}_])",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "begin": "#(?=[\\p{L}\\p{Nl}__])",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "variable.other.readwrite.hash.typst"
@@ -278,7 +278,7 @@
     },
     {
      "begin": "#(?=\\\")",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "string.hash.hash.typst"
@@ -297,7 +297,7 @@
     },
     {
      "begin": "#(?=\\d|\\.\\d)",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "constant.numeric.hash.typst"
@@ -316,7 +316,7 @@
     },
     {
      "begin": "#(?:)",
-     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
+     "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{L}\\p{Nl}__]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
        "name": "keyword.control.hash.typst"
@@ -388,7 +388,7 @@
     },
     {
      "name": "constant.numeric.integer.typst",
-     "match": "(?<!\\)|\\]|\\})(^|(?<=\\s|#)|\\b)\\d+\\b(?!\\.(?:[^\\p{XID_Start}_]|$)|[eE])"
+     "match": "(?<!\\)|\\]|\\})(^|(?<=\\s|#)|\\b)\\d+\\b(?!\\.(?:[^\\p{L}\\p{Nl}__]|$)|[eE])"
     },
     {
      "name": "constant.numeric.hex.typst",
@@ -427,15 +427,15 @@
    "name": "entity.name.type.primitive.typst"
   },
   "identifier": {
-   "match": "(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*",
+   "match": "(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*",
    "name": "variable.other.readwrite.typst"
   },
   "mathIdentifier": {
-   "match": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+",
+   "match": "(?:(?<=_)|\\b)(?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])+",
    "name": "variable.other.readwrite.typst"
   },
   "paramOrArgName": {
-   "match": "(?!(show|import|include)\\s*\\:)((?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*)\\s*(\\:)",
+   "match": "(?!(show|import|include)\\s*\\:)((?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*)\\s*(\\:)",
    "captures": {
     "2": {
      "name": "variable.other.readwrite.typst"
@@ -447,11 +447,11 @@
   },
   "markupLabel": {
    "name": "string.other.label.typst",
-   "match": "<[\\p{XID_Start}_][\\p{XID_Continue}_\\-\\.:]*>"
+   "match": "<[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-\\.:]*>"
   },
   "markupReference": {
    "name": "string.other.reference.typst",
-   "match": "(@)[\\p{XID_Start}_](?:[\\p{XID_Continue}_\\-]|[\\.:](?!:\\s|$|([\\.:]*[^\\p{XID_Continue}_\\-\\.:])))*",
+   "match": "(@)[\\p{L}\\p{Nl}__](?:[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]|[\\.:](?!:\\s|$|([\\.:]*[^\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-\\.:])))*",
    "captures": {
     "1": {
      "name": "punctuation.definition.reference.typst"
@@ -566,7 +566,7 @@
   },
   "blockRawGeneral": {
    "name": "markup.raw.block.typst",
-   "begin": "(`{3,})([\\p{XID_Start}_][\\p{XID_Continue}_\\-]*\\b)?",
+   "begin": "(`{3,})([\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*\\b)?",
    "beginCaptures": {
     "1": {
      "name": "punctuation.definition.raw.begin.typst"
@@ -722,19 +722,19 @@
    ]
   },
   "mathPrimary": {
-   "begin": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+",
+   "begin": "(?:(?<=_)|\\b)(?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])+",
    "beginCaptures": {
     "0": {
      "name": "variable.other.readwrite.typst"
     }
    },
-   "end": "(?!(?:\\(|\\.[\\p{XID_Start}]))|(?=\\$)",
+   "end": "(?!(?:\\(|\\.[\\p{L}\\p{Nl}_]))|(?=\\$)",
    "patterns": [
     {
      "include": "#strictMathFuncCallOrPropAccess"
     },
     {
-     "match": "(\\.)([\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])*)",
+     "match": "(\\.)((?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])*)",
      "captures": {
       "1": {
        "name": "keyword.operator.accessor.typst"
@@ -777,7 +777,7 @@
   "contextStatement": {
    "name": "meta.expr.context.typst",
    "begin": "\\bcontext\\b(?!-)",
-   "end": "(?<=[\\}\\]])|(?<!\\bcontext\\s*)(?=[\\{\\[])|(?=[;\\}\\]\\)\\n]|$)",
+   "end": "(?<=[\\}\\]\\d])|(?=[;\\}\\]\\)\\n]|$)",
    "beginCaptures": {
     "0": {
      "name": "keyword.control.other.typst"
@@ -802,6 +802,10 @@
     },
     {
      "include": "#contentBlock"
+    },
+    {
+     "match": "\\b(else)\\b(?!-)",
+     "name": "keyword.control.conditional.typst"
     },
     {
      "match": "\\b(break|continue)\\b(?!-)",
@@ -1084,7 +1088,7 @@
      "include": "#comments"
     },
     {
-     "begin": "(\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*)(\\()",
+     "begin": "(\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*)(\\()",
      "end": "\\)",
      "beginCaptures": {
       "1": {
@@ -1136,7 +1140,7 @@
   },
   "letInitClause": {
    "begin": "=\\s*",
-   "end": "(?<!\\s*=)(?=[;\\]})\\n])",
+   "end": "(?=[;\\]})\\n])",
    "beginCaptures": {
     "0": {
      "name": "keyword.operator.assignment.typst"
@@ -1175,7 +1179,7 @@
   },
   "ifClause": {
    "begin": "\\bif\\b(?!-)",
-   "end": "(?<!(?:if|and|or|not|in|!=|==|<=|>=|<|>|\\+|-|\\*|\\/|=|\\+=|-=|\\*=|\\/=)\\s*)(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
+   "end": "(?<![ile if and or not in\\s]{3}|[=<>\\+\\-\\*\\/\\s]{3})(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
    "beginCaptures": {
     "0": {
      "name": "keyword.control.conditional.typst"
@@ -1212,7 +1216,7 @@
   },
   "forClause": {
    "begin": "(for\\b)\\s*",
-   "end": "(?<!(?:if|and|or|not|in|!=|==|<=|>=|<|>|\\+|-|\\*|\\/|=|\\+=|-=|\\*=|\\/=)\\s*)(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
+   "end": "(?<![ile if and or not in\\s]{3}|[=<>\\+\\-\\*\\/\\s]{3})(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
    "beginCaptures": {
     "1": {
      "name": "keyword.control.loop.typst"
@@ -1245,7 +1249,7 @@
   },
   "whileClause": {
    "begin": "(while\\b)\\s*",
-   "end": "(?<!(?:if|and|or|not|in|!=|==|<=|>=|<|>|\\+|-|\\*|\\/|=|\\+=|-=|\\*=|\\/=)\\s*)(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
+   "end": "(?<![ile if and or not in\\s]{3}|[=<>\\+\\-\\*\\/\\s]{3})(?=[\\[\\{\\n])|(?=[;\\}\\]\\)\\n]|$)",
    "beginCaptures": {
     "1": {
      "name": "keyword.control.loop.typst"
@@ -1259,7 +1263,7 @@
   },
   "setStatement": {
    "name": "meta.expr.set.typst",
-   "begin": "(?=(?:(set\\b(?!-))\\s*(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*))",
+   "begin": "(?=(?:(set\\b(?!-))\\s*(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*))",
    "end": "(?<=\\))(?!\\s*if\\b)|(?=[\\s;\\{\\[\\}\\]\\)])",
    "patterns": [
     {
@@ -1376,7 +1380,7 @@
   },
   "strictFuncCallOrPropAccess": {
    "name": "meta.expr.call.typst",
-   "begin": "(?=(?:(\\.)?(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=\\(|\\[)))",
+   "begin": "(?=(?:(\\.)?(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=\\(|\\[)))",
    "end": "(?:(?<=\\)|\\])(?![\\[\\(\\.]))|(?=[\\s;\\,\\}\\]\\)]|$)",
    "patterns": [
     {
@@ -1384,7 +1388,7 @@
      "name": "keyword.operator.accessor.typst"
     },
     {
-     "match": "(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=\\(|\\[)",
+     "match": "(?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*(?=\\(|\\[)",
      "captures": {
       "0": {
        "patterns": [
@@ -1458,15 +1462,15 @@
   },
   "strictMathFuncCallOrPropAccess": {
    "name": "meta.expr.call.typst",
-   "begin": "(?=(?:(?:(\\.)([\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])*)|(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+)(?=\\()))",
-   "end": "(?:(?<=[\\)])(?![\\(\\.]|(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+(?=\\()))|(?=[\\$\\s;,\\}\\]\\)]|$)",
+   "begin": "(?=(?:(?:(\\.)((?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])*)|(?:(?<=_)|\\b)(?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])+)(?=\\()))",
+   "end": "(?:(?<=[\\)])(?![\\(\\.]|(?:(?<=_)|\\b)(?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])+(?=\\()))|(?=[\\$\\s;,\\}\\]\\)]|$)",
    "patterns": [
     {
      "match": "\\.",
      "name": "keyword.operator.accessor.typst"
     },
     {
-     "match": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+(?=\\()",
+     "match": "(?:(?<=_)|\\b)(?:(?!_)[\\p{L}\\p{Nl}_])(?:(?!_)[\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}])+(?=\\()",
      "name": "entity.name.function.typst",
      "captures": {
       "0": {
@@ -1579,7 +1583,7 @@
    "name": "meta.expr.arrow-function.typst",
    "patterns": [
     {
-     "match": "((?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*)\\s*(?==>)",
+     "match": "((?<!\\)|\\]|\\})\\b[\\p{L}\\p{Nl}__][\\p{L}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}\\\\u{00B7}\\\\u{30FB}\\\\u{FF65}_\\-]*)\\s*(?==>)",
      "captures": {
       "1": {
        "name": "variable.parameter.typst"
