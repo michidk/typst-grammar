@@ -59,3 +59,5 @@ jobs:
       run: bundle exec rake
     - name: Check Licenses
       run: bundle exec licensed status -c vendor/licenses/config.yml
+    - name: Check Grammar
+      run: script/grammar-compiler add vendor/grammars/typst-grammar
