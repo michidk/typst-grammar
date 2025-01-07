@@ -134,7 +134,7 @@
      "include": "#strictMathFuncCallOrPropAccess"
     },
     {
-     "include": "#mathIdentifier"
+     "include": "#mathPrimary"
     },
     {
      "include": "#mathMoreBrace"
@@ -182,7 +182,7 @@
      ]
     },
     {
-     "begin": "#(?=(?:any|str|int|float|bool|length|content|array|dictionary|arguments)\\b(?!-))",
+     "begin": "#(?=(?:any|str|int|float|bool|type|length|content|array|dictionary|arguments)\\b(?!-))",
      "end": "(?<=;)|(?<=[\\)\\]\\}])(?![;\\(\\[\\$]|(?:\\.(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=[\\(\\[])))|(?<!#)(?=\")|(?=\\.(?:[^0-9\\p{XID_Start}_]|$))|(?=[\\s\\}\\]\\)\\$]|$)|(;)",
      "beginCaptures": {
       "0": {
@@ -344,7 +344,7 @@
      "include": "#comments"
     },
     {
-     "name": "punctuation.separator.colon.typst",
+     "name": "punctuation.terminator.statement.typst",
      "match": ";"
     },
     {
@@ -416,14 +416,14 @@
   },
   "primitiveColors": {
    "match": "\\b(red|blue|green|black|white|gray|silver|eastern|navy|aqua|teal|purple|fuchsia|maroon|orange|yellow|olive|lime|ltr|rtl|ttb|btt|start|left|center|right|end|top|horizon|bottom)\\b(?!-)",
-   "name": "support.type.builtin.typst"
+   "name": "variable.other.constant.builtin.typst"
   },
   "primitiveFunctions": {
    "match": "\\b(?:luma|oklab|oklch|rgb|cmyk|range)\\b(?!-)",
    "name": "support.function.builtin.typst"
   },
   "primitiveTypes": {
-   "match": "\\b(any|str|int|float|bool|length|content|array|dictionary|arguments)\\b(?!-)",
+   "match": "\\b(any|str|int|float|bool|type|length|content|array|dictionary|arguments)\\b(?!-)",
    "name": "entity.name.type.primitive.typst"
   },
   "identifier": {
@@ -431,15 +431,26 @@
    "name": "variable.other.readwrite.typst"
   },
   "mathIdentifier": {
-   "match": "\\b[\\p{XID_Start}_][\\p{XID_Continue}_]+",
+   "match": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+",
    "name": "variable.other.readwrite.typst"
   },
+  "paramOrArgName": {
+   "match": "(?!(show|import|include)\\s*\\:)((?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*)\\s*(\\:)",
+   "captures": {
+    "2": {
+     "name": "variable.other.readwrite.typst"
+    },
+    "3": {
+     "name": "punctuation.separator.colon.typst"
+    }
+   }
+  },
   "markupLabel": {
-   "name": "entity.other.label.typst",
+   "name": "string.other.label.typst",
    "match": "<[\\p{XID_Start}_][\\p{XID_Continue}_\\-\\.:]*>"
   },
   "markupReference": {
-   "name": "entity.other.reference.typst",
+   "name": "string.other.reference.typst",
    "match": "(@)[\\p{XID_Start}_](?:[\\p{XID_Continue}_\\-]|[\\.:](?!:\\s|$|([\\.:]*[^\\p{XID_Continue}_\\-\\.:])))*",
    "captures": {
     "1": {
@@ -617,12 +628,12 @@
    "end": "\\$",
    "beginCaptures": {
     "0": {
-     "name": "punctuation.definition.string.math.typst"
+     "name": "punctuation.definition.string.begin.math.typst"
     }
    },
    "endCaptures": {
     "0": {
-     "name": "punctuation.definition.string.math.typst"
+     "name": "punctuation.definition.string.end.math.typst"
     }
    },
    "patterns": [
@@ -710,9 +721,73 @@
     }
    ]
   },
+  "mathPrimary": {
+   "begin": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+",
+   "beginCaptures": {
+    "0": {
+     "name": "variable.other.readwrite.typst"
+    }
+   },
+   "end": "(?!(?:\\(|\\.[\\p{XID_Start}]))|(?=\\$)",
+   "patterns": [
+    {
+     "include": "#strictMathFuncCallOrPropAccess"
+    },
+    {
+     "match": "(\\.)([\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])*)",
+     "captures": {
+      "1": {
+       "name": "keyword.operator.accessor.typst"
+      },
+      "2": {
+       "name": "variable.other.readwrite.typst"
+      }
+     }
+    },
+    {
+     "include": "#mathCallArgs"
+    },
+    {
+     "include": "#mathIdentifier"
+    }
+   ]
+  },
   "mathMoreBrace": {
    "name": "markup.content.brace.typst",
    "match": "[{}()\\[\\]]"
+  },
+  "includeStatement": {
+   "name": "meta.expr.include.typst",
+   "begin": "(\\binclude\\b(?!-))\\s*",
+   "end": "(?=[\\n;\\}\\]\\)])",
+   "beginCaptures": {
+    "1": {
+     "name": "keyword.control.import.typst"
+    }
+   },
+   "patterns": [
+    {
+     "include": "#comments"
+    },
+    {
+     "include": "#expression"
+    }
+   ]
+  },
+  "contextStatement": {
+   "name": "meta.expr.context.typst",
+   "begin": "\\bcontext\\b(?!-)",
+   "end": "(?<=[\\}\\]])|(?<!\\bcontext\\s*)(?=[\\{\\[])|(?=[;\\}\\]\\)\\n]|$)",
+   "beginCaptures": {
+    "0": {
+     "name": "keyword.control.other.typst"
+    }
+   },
+   "patterns": [
+    {
+     "include": "#expression"
+    }
+   ]
   },
   "expression": {
    "patterns": [
@@ -734,7 +809,7 @@
     },
     {
      "match": "\\b(in)\\b(?!-)",
-     "name": "keyword.operator.range.typst"
+     "name": "keyword.other.range.typst"
     },
     {
      "match": "\\b(and|or|not)\\b(?!-)",
@@ -825,6 +900,10 @@
      "name": "keyword.operator.accessor.typst"
     },
     {
+     "match": ",",
+     "name": "punctuation.separator.comma.typst"
+    },
+    {
      "match": "\\+|\\\\|\\/|(?<![[:alpha:]])(?<!\\w)(?<!\\d)-(?![[:alnum:]-][[:alpha:]_])",
      "name": "keyword.operator.arithmetic.typst"
     },
@@ -877,7 +956,7 @@
     },
     {
      "begin": "\\(",
-     "end": "\\)",
+     "end": "\\)|(?=[;\\}\\]])",
      "beginCaptures": {
       "0": {
        "name": "meta.brace.round.typst"
@@ -899,30 +978,7 @@
   "literalContent": {
    "patterns": [
     {
-     "name": "punctuation.separator.colon.typst",
-     "match": ":"
-    },
-    {
-     "name": "punctuation.separator.comma.typst",
-     "match": ","
-    },
-    {
-     "include": "#expression"
-    }
-   ]
-  },
-  "includeStatement": {
-   "name": "meta.expr.include.typst",
-   "begin": "(\\binclude\\b(?!-))\\s*",
-   "end": "(?=[\\n;\\}\\]\\)])",
-   "beginCaptures": {
-    "1": {
-     "name": "keyword.control.import.typst"
-    }
-   },
-   "patterns": [
-    {
-     "include": "#comments"
+     "include": "#paramOrArgName"
     },
     {
      "include": "#expression"
@@ -1056,7 +1112,7 @@
     },
     {
      "begin": "\\(",
-     "end": "\\)",
+     "end": "\\)|(?=[;\\}\\]])",
      "beginCaptures": {
       "0": {
        "name": "meta.brace.round.typst"
@@ -1201,21 +1257,6 @@
     }
    ]
   },
-  "contextStatement": {
-   "name": "meta.expr.context.typst",
-   "begin": "\\bcontext\\b(?!-)",
-   "end": "(?<=[\\}\\]])|(?<!\\bcontext\\s*)(?=[\\{\\[])|(?=[;\\}\\]\\)\\n]|$)",
-   "beginCaptures": {
-    "0": {
-     "name": "keyword.control.other.typst"
-    }
-   },
-   "patterns": [
-    {
-     "include": "#expression"
-    }
-   ]
-  },
   "setStatement": {
    "name": "meta.expr.set.typst",
    "begin": "(?=(?:(set\\b(?!-))\\s*(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*))",
@@ -1233,8 +1274,8 @@
    ]
   },
   "setClause": {
-   "begin": "(set\\b)\\s*",
-   "end": "(?=if)|(?=[\\n;\\]}])",
+   "begin": "(set\\b)\\s+",
+   "end": "(?=if)|(?=[\\n;\\{\\[\\}\\]\\)])",
    "beginCaptures": {
     "1": {
      "name": "keyword.control.other.typst"
@@ -1336,7 +1377,7 @@
   "strictFuncCallOrPropAccess": {
    "name": "meta.expr.call.typst",
    "begin": "(?=(?:(\\.)?(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=\\(|\\[)))",
-   "end": "(?:(?<=\\)|\\])(?:(?![\\[\\(\\.])|$))|(?=[\\s;\\,\\}\\]\\)]|$)",
+   "end": "(?:(?<=\\)|\\])(?![\\[\\(\\.]))|(?=[\\s;\\,\\}\\]\\)]|$)",
    "patterns": [
     {
      "match": "\\.",
@@ -1344,12 +1385,22 @@
     },
     {
      "match": "(?<!\\)|\\]|\\})\\b[\\p{XID_Start}_][\\p{XID_Continue}_\\-]*(?=\\(|\\[)",
-     "name": "entity.name.function.typst",
-     "patterns": [
-      {
-       "include": "#primitiveFunctions"
+     "captures": {
+      "0": {
+       "patterns": [
+        {
+         "include": "#primitiveFunctions"
+        },
+        {
+         "include": "#primitiveTypes"
+        },
+        {
+         "match": ".*",
+         "name": "entity.name.function.typst"
+        }
+       ]
       }
-     ]
+     }
     },
     {
      "include": "#identifier"
@@ -1375,7 +1426,7 @@
   },
   "callArgs": {
    "begin": "\\(",
-   "end": "\\)",
+   "end": "\\)|(?=[;\\}\\]])",
    "beginCaptures": {
     "0": {
      "name": "meta.brace.round.typst"
@@ -1398,8 +1449,7 @@
      "include": "#comments"
     },
     {
-     "match": ",",
-     "name": "punctuation.separator.comma.typst"
+     "include": "#paramOrArgName"
     },
     {
      "include": "#expression"
@@ -1408,21 +1458,33 @@
   },
   "strictMathFuncCallOrPropAccess": {
    "name": "meta.expr.call.typst",
-   "begin": "(?=(?:(\\.)?\\b[\\p{XID_Start}_][\\p{XID_Continue}_]+(?=\\(|\\[)))",
-   "end": "(?:(?<=\\)|\\])(?:(?![\\[\\(\\.])|$))|(?=[\\s;\\,\\}\\]\\)]|$)",
+   "begin": "(?=(?:(?:(\\.)([\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])*)|(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+)(?=\\()))",
+   "end": "(?:(?<=[\\)])(?![\\(\\.]|(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+(?=\\()))|(?=[\\$\\s;,\\}\\]\\)]|$)",
    "patterns": [
     {
      "match": "\\.",
      "name": "keyword.operator.accessor.typst"
     },
     {
-     "match": "\\b[\\p{XID_Start}_][\\p{XID_Continue}_]+(?=\\(|\\[)",
+     "match": "(?:(?<=_)|\\b)[\\p{XID_Start}](?:(?!_)[\\p{XID_Continue}])+(?=\\()",
      "name": "entity.name.function.typst",
-     "patterns": [
-      {
-       "include": "#primitiveFunctions"
+     "captures": {
+      "0": {
+       "name": "entity.name.function.typst",
+       "patterns": [
+        {
+         "include": "#primitiveFunctions"
+        },
+        {
+         "include": "#primitiveTypes"
+        },
+        {
+         "match": ".*",
+         "name": "entity.name.function.typst"
+        }
+       ]
       }
-     ]
+     }
     },
     {
      "include": "#mathIdentifier"
@@ -1440,15 +1502,12 @@
     },
     {
      "include": "#mathCallArgs"
-    },
-    {
-     "include": "#contentBlock"
     }
    ]
   },
   "mathCallArgs": {
    "begin": "\\(",
-   "end": "\\)",
+   "end": "\\)|(?=\\$)",
    "beginCaptures": {
     "0": {
      "name": "meta.brace.round.typst"
@@ -1461,21 +1520,17 @@
    },
    "patterns": [
     {
-     "include": "#mathPatternOrArgsBody"
-    }
-   ]
-  },
-  "mathPatternOrArgsBody": {
-   "patterns": [
-    {
      "include": "#comments"
+    },
+    {
+     "include": "#mathParen"
     },
     {
      "match": ",",
      "name": "punctuation.separator.comma.typst"
     },
     {
-     "include": "#markupMath"
+     "include": "#math"
     }
    ]
   },
@@ -1561,7 +1616,7 @@
     },
     {
      "begin": "=>",
-     "end": "(?<=\\}|\\])|(?:(?!\\{|\\[)(?=[\\n\\S;]))",
+     "end": "(?<=\\}|\\])|(?:(?!\\{|\\[)(?=[\\n\\S;\\}\\]\\)]))",
      "beginCaptures": {
       "0": {
        "name": "storage.type.function.arrow.typst"
