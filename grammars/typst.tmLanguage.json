@@ -4,6 +4,9 @@
  "name": "typst",
  "patterns": [
   {
+   "include": "#shebang"
+  },
+  {
    "include": "#markup"
   }
  ],
@@ -140,6 +143,16 @@
      "include": "#markupBrace"
     }
    ]
+  },
+  "shebang": {
+   "name": "comment.line.shebang.typst",
+   "begin": "^(#!)",
+   "beginCaptures": {
+    "1": {
+     "name": "punctuation.definition.comment.line.shebang.typst"
+    }
+   },
+   "end": "\\n"
   },
   "code": {
    "patterns": [
